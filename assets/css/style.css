@@ -1,0 +1,14 @@
+
+/* Set a default font and background for the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c4c4c4;
+    margin: 0;
+    padding: 10px;
+}
+
+/* Style for headers */
+h1, h2, h3 {
+    color: #333333;
+    margin-bottom: 10px;
+}
