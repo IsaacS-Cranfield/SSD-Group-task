@@ -2,9 +2,8 @@
 /* Set a default font and background for the body */
 body {
     font-family: Arial, sans-serif;
-    background-color: #c4c4c4;
+    background-color: #ffffff;
     margin: 0;
-    padding: 10px;
 }
 
 /* Style for headers */
@@ -12,3 +11,50 @@ h1, h2, h3 {
     color: #333333;
     margin-bottom: 10px;
 }
+
+nav {
+    background-color: #ffffff;
+    padding: px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.nav-logo img{
+    height: 100px;
+}
+
+nav ul {
+    list-style: none;
+    margin-right: 20px;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav ul a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    display: inline-block;
+    width: 140px;
+    padding: 20px 25px;
+    background-color: rgb(192, 192, 192);
+    border-radius: 8px;
+    transition: background 0.2s, transform 0.2s;
+
+}
+
+nav ul a:hover {
+    background-color: #5a5a5a;
+    transform: scale(0.95);
+}
+
+
+
