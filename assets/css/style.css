@@ -22,6 +22,10 @@ nav {
     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
+.nav-logo {
+    margin: 20px;
+}
+
 .nav-logo img{
     height: 100px;
 }
@@ -55,6 +59,5 @@ nav ul a:hover {
     background-color: RGB(107, 142, 35);
     transform: scale(0.95);
 }
-
 
 
