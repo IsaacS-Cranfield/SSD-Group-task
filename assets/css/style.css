@@ -56,5 +56,42 @@ nav ul a:hover {
     transform: scale(0.95);
 }
 
+/* Style for homepage image */
+body {
+    background-image: url ('Background image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Wrapper to hold picture and text */
+.wrapper {
+    text-align: center;
+    color: white;
+    padding: 50px;
+}
+
+/* Responsive image styling */
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Centered text box styling */
+.text-box {
+    background-color: rgba(0, 0, 0, 0);
+    display: inline-block;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.text-box h2 {
+    margin-top: 0;
+}
+.text-box p {
+    line-height: 1.6;
+}
 
 
