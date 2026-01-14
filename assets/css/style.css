@@ -52,7 +52,7 @@ nav ul a {
 }
 
 nav ul a:hover {
-    background-color: #5a5a5a;
+    background-color: RGB(107, 142, 35);
     transform: scale(0.95);
 }
 
