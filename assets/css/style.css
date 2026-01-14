@@ -23,6 +23,13 @@ nav {
 }
 
 .nav-logo {
+    display: block;
+    width: 200px;
+    height: 100px;
+    background-image: url('../images/FitLife Logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     margin: 20px;
 }
 
