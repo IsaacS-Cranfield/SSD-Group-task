@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FitLife Studios</title>
-    <link rel="stylesheet" href="assets/css/Style Login.css">
-</head>
-<body>
-
-<h2>Modal Login Form</h2>
-
-<button onclick="document.getElementById('id01').style.display='block'"
-   style="width:auto;">Login</button>
-
 <div id="id01" class="modal">
 
     <form class="modal-content animate" action="/action_page.php"
@@ -37,13 +22,20 @@
                 </div>
 
                 <div class="container" style="background-color: rgb(241, 241, 241);">
-                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                        class="cancelbtn">Cancel</button>
+                    <button type="button" id="cancelBtn" class="cancelbtn">Cancel</button>
                     <span class="psw">Forgot <a href="#">password?</a></span>
                 </div>
 
 <script>
     var modal = document.getElementById('id01');
+
+    document.getElementById('loginBtn').onclick = function () {
+        modal.style.display = "block";
+    };
+
+    document.getElementById('cancelBtn').onclick = function() {
+        document.getElementById('id01').style.display = "none";
+    };
 
     window.onclick = function(event) {
         if (event.target == modal) {
@@ -51,6 +43,3 @@
         }
     }
 </script>
-
-</body>
-</html>
