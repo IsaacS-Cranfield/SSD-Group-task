@@ -67,3 +67,21 @@ span.psw {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   padding-top: 60px;
 }
+
+/* Modal Content Box */
+.modal-content {
+  background-color: aliceblue;
+  margin: 10% auto 20% auto;
+  border: 1px solid #888;
+  width: 80%;-
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: RGB(255,0,0);
+  font-size: 30px;
+  font-weight: bold;
+}
