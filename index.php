@@ -30,7 +30,6 @@
         </div>
     </div>
 
-    <?php include 'includes/login-modal.php'; ?>
-    <?php include 'includes/SignUp-modal.php'; ?>
+    <?php include 'includes/auth-modal.php'; ?>
 </body>
 </html>
