@@ -22,8 +22,11 @@
                 </label>
                 </div>
 
-                <div class="container" style="background-color: rgb(241, 241, 241);">
-                    <button type="button" id="cancelBtn" class="cancelbtn">Cancel</button>
+                <div class="container" style="background-color: rgb(241, 241, 241); display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <button type="button" id="cancelBtn" class="cancelbtn">Cancel</button>
+                        <button type="button" class="signbtn" id="signupBtn">Sign Up</button>
+                    </div>
                     <span class="psw">Forgot <a href="#">password?</a></span>
                 </div>
 
@@ -41,6 +44,17 @@
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+        }
+    }
+
+    // Show signup modal when Sign Up button is clicked
+    document.getElementById('signupBtn').onclick = function() {
+        // Hide login modal
+        modal.style.display = "none";
+        // Show signup modal if it exists
+        var signupModal = document.getElementById('id01-signup');
+        if (signupModal) {
+            signupModal.style.display = "block";
         }
     }
 </script>

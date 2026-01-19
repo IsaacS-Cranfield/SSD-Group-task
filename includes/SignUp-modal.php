@@ -1,9 +1,9 @@
-<div id="id01" class="modal">
+<div id="id01-signup" class="modal">
 
     <form class="modal-content animate" action="/action_page.php"
         method="post">
         <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'"
+            <span onclick="document.getElementById('id01-signup').style.display='none'"
                 class="close" title="Close Modal">&times;</span>
             <img src="assets/images/FitLife-logo.png" alt="logo" class="logo">
         </div>
@@ -43,19 +43,17 @@
                 </div>
 
 <script>
-    var modal = document.getElementById('id01');
+    var signupModal = document.getElementById('id01-signup');
 
-    document.getElementById('loginBtn').onclick = function () {
-        modal.style.display = "block";
-    };
+    // Optional: If you want to show this modal from somewhere else, add a trigger here
 
     document.getElementById('cancelBtn').onclick = function() {
-        document.getElementById('id01').style.display = "none";
+        signupModal.style.display = "none";
     };
 
     window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target == signupModal) {
+            signupModal.style.display = "none";
         }
     }
 </script>
