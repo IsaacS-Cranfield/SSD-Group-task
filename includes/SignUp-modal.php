@@ -34,8 +34,11 @@
                 </label>
                 </div>
 
-                <div class="container" style="background-color: rgb(241, 241, 241);">
-                    <button type="button" id="cancelBtn" class="cancelbtn">Cancel</button>
+                <div class="container" style="background-color: rgb(241, 241, 241); display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <button type="button" id="cancelBtn" class="cancelbtn">Cancel</button>
+                        <button type="submit" class="signbtn">Sign Up</button>
+                    </div>
                     <span class="psw">Forgot <a href="#">password?</a></span>
                 </div>
 
