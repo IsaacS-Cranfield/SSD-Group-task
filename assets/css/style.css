@@ -1,7 +1,7 @@
 
 /* Set a default font and background for the body */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Nunito", sans-serif;
     background-color: #ffffff;
     margin: 0;
 }
@@ -22,8 +22,15 @@ nav {
     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
-.nav-logo img{
+.nav-logo {
+    display: block;
+    width: 250px;
     height: 100px;
+    background-image: url('../images/FitLife Logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 20px;
 }
 
 nav ul {
@@ -43,7 +50,7 @@ nav ul a {
     color: black;
     text-align: center;
     display: inline-block;
-    width: 140px;
+    width: 150px;
     padding: 20px 25px;
     background-color: rgb(192, 192, 192);
     border-radius: 8px;
@@ -93,5 +100,4 @@ body {
 .text-box p {
     line-height: 1.6;
 }
-
 
