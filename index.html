@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>FitLife Studios</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Custom Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
@@ -12,15 +16,20 @@
         <ul>
             <li><a href="admin.html">Admin Page</a></li>
             <li><a href="Trainer Dashboard.html">Trainer Dashboard</a></li>
-            <li><a href="profile.html">Profile Page</a></li>
+            <li><a> Login / Sign up</a></li>
         </ul>
     </nav>
 
-    <h2>Welcome to the FitLife Website</h2>
-    <p>
-        hello<br>
-        Hi from joshua <br>
-        Hi from Evie <br>
-    </p>
+    <div class="wrapper">
+        <picture>
+            <source media="(max-width: 799px)" srcset="assets/images/Background image.png">
+            <source media="(min-width: 800px)" srcset="assets/images/Background image.png">
+            <img src="assets/images/Background image.png" alt="Background Image" class="responsive-image">
+        </picture>
+        <div class="text-box">
+            <h1>Welcome to FitLife Studios</h1>
+        </div>
+    </div>
+
 </body>
 </html>
