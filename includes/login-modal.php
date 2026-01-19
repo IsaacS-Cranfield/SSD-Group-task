@@ -31,31 +31,36 @@
                 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
     var modal = document.getElementById('id01');
+    var loginBtn = document.getElementById('loginBtn');
+    var cancelBtn = document.getElementById('cancelBtn');
+    var signupBtn = document.getElementById('signupBtn');
 
-    document.getElementById('loginBtn').onclick = function () {
-        modal.style.display = "block";
-    };
-
-    document.getElementById('cancelBtn').onclick = function() {
-        document.getElementById('id01').style.display = "none";
-    };
-
+    if (loginBtn) {
+        loginBtn.onclick = function () {
+            modal.style.display = "block";
+        };
+    }
+    if (cancelBtn) {
+        cancelBtn.onclick = function() {
+            modal.style.display = "none";
+        };
+    }
+    if (signupBtn) {
+        signupBtn.onclick = function() {
+            modal.style.display = "none";
+            var signupModal = document.getElementById('id01-signup');
+            if (signupModal) {
+                signupModal.style.display = "block";
+            }
+        };
+    }
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
-
-    // Show signup modal when Sign Up button is clicked
-    document.getElementById('signupBtn').onclick = function() {
-        // Hide login modal
-        modal.style.display = "none";
-        // Show signup modal if it exists
-        var signupModal = document.getElementById('id01-signup');
-        if (signupModal) {
-            signupModal.style.display = "block";
-        }
-    }
-
+});
+</script>
 </script>
