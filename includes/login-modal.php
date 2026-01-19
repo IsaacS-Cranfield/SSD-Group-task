@@ -57,4 +57,5 @@
             signupModal.style.display = "block";
         }
     }
+
 </script>

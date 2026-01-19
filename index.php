@@ -28,5 +28,6 @@
     </div>
 
     <?php include 'includes/login-modal.php'; ?>
+    <?php include 'includes/SignUp-modal.php'; ?>
 </body>
 </html>
