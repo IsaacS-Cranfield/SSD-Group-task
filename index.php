@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,19 +20,21 @@
 
 <body>
     <nav>
-        <a href="index.html" class="nav-logo"></a>
+        <a href="index.php" class="nav-logo"></a>
         
-        <button id="loginBtn" class="loginBtn">Login/Signup</button></li>
+        <button id="navLogin" class="navLogin">Login/Signup</button></li>
         
     </nav>
-
-   <div class="hero" 
-        <div class="wrapper">
-            <div class="text-box">
-                <h1>Welcome to FitLife Studios</h1>
+    <main>
+        <div class="hero">
+            <div class="wrapper">
+                <div class="text-box">
+                    <h1>Welcome to FitLife Studios</h1>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
+   
 
     <?php include 'includes/auth-modal.php'; ?>
 </body>

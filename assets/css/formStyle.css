@@ -55,7 +55,12 @@ img.avatar {
   padding: 16px;
 }
 
-span.psw {
+.success {
+  color: green;
+  text-align: center;
+}
+
+span.password {
   float: right;
   padding-top: 16px;
 }

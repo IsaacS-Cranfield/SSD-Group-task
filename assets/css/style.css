@@ -63,7 +63,7 @@ nav ul a:hover {
     transform: scale(0.95);
 }
 
-.loginBtn {
+.navLogin {
     color: black;
     text-align: center;
     text-decoration: none;
@@ -79,7 +79,7 @@ nav ul a:hover {
     transition: background 0.2s, transform 0.2s;
 }
 
-.loginBtn:hover {
+.navLogin:hover {
     background-color: RGB(107, 142, 35);
     transform: scale(0.95);
 }
