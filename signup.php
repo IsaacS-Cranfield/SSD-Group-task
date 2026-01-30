@@ -25,6 +25,7 @@ if(isset($_POST['signup'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $Cpassword = $_POST['Cpassword'];
+    $role = $_POST['role'];
 
     // Check if passwords match
     if ($password != $Cpassword) {
@@ -40,14 +41,14 @@ if(isset($_POST['signup'])) {
             echo '<script>window.location.href = "signup.php";</script>';
         } else {
             //Insert new record using prepared statements
-            $query = $conn->prepare("INSERT INTO users (email, first_name, last_name, password_hash) VALUES 
-            (?, ?, ?, ?)");  
+            $query = $conn->prepare("INSERT INTO users (email, first_name, last_name, password_hash, role) VALUES 
+            (?, ?, ?, ?, ?)");  
             
             // hash the password before storing it
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);    
 
             //Bind parameters
-            $query->bind_param("ssss", $email, $first_name, $last_name, $hashedPassword);
+            $query->bind_param("sssss", $email, $first_name, $last_name, $hashedPassword, $role);
         
             //Execute query
             if($query->execute()) {

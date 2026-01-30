@@ -1,64 +1,70 @@
+html {
+    font-size: 62.5%; /* 1rem is 10px */
+}
 
 /* Set a default font and background for the body */
 body {
     font-family: "Nunito", sans-serif;
     background-color: #ffffff;
     margin: 0;
+    font-size: 1.6rem; /* base text is 16px */
 }
 
 /* Style for headers */
 h1, h2, h3 {
     color: #333333;
-    margin-bottom: 10px;
+    margin-bottom: 1rem; /* 10px */
 }
 
 nav {
     background-color: #ffffff;
-    padding: px;
-    margin-bottom: 20px;
+    padding: 1rem; /* 10px */
+    margin-bottom: 2rem; /* 20px */
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.15); /* 5px 15px */
 }
 
 .nav-logo {
     display: block;
-    width: 250px;
-    height: 100px;
+    max-width: 25rem; /* 250px */
+    width: 40%;
+    aspect-ratio: 250 / 100;
     background-image: url('../images/FitLife-logo.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 20px;
+    margin: 2rem; /* 20px */
 }
 
-nav ul {
+.nav-links {
     list-style: none;
-    margin-right: 20px;
+    margin-right: 2rem; /* 20px */
     padding: 0;
     display: flex;
-    gap: 15px;
+    gap: 1.5rem; /* 15px */
 }
 
 nav li {
     margin: 0;
 }
 
-nav ul a {
+.nav-links a {
     text-decoration: none;
     color: black;
     text-align: center;
     display: inline-block;
-    width: 150px;
-    padding: 20px 25px;
+    width: 15rem;
+    padding: 2rem 2.5rem; 
     background-color: rgb(192, 192, 192);
-    border-radius: 8px;
+    border-radius: 0.8rem; 
+    box-shadow: 0.4rem 0.5rem 0.5rem rgba(0, 0, 0, 0.15);
     transition: background 0.2s, transform 0.2s;
-
 }
 
-nav ul a:hover {
+.nav-links a:hover {
     background-color: RGB(107, 142, 35);
     transform: scale(0.95);
 }
@@ -67,15 +73,18 @@ nav ul a:hover {
     color: black;
     text-align: center;
     text-decoration: none;
-    font-style: "Nunito", sans-serif;
+    font-family: "Nunito", sans-serif;
+    font-size: 1.6rem;
     display: inline-block;
-    flex-shrink: 0; /* Prevent shrinking */
-    width: auto; /* Adjust width to content */
-    padding: 20px 25px;
-    margin-right: 50px;
+    cursor: pointer;
+    flex-shrink: 0;
+    width: auto;
+    padding: 2rem 2.5rem;
+    margin-right: 5rem;
     background-color: rgb(192, 192, 192);
-    border-radius: 8px;
-    border-width: 0px;
+    border-radius: 0.8rem;
+    border-width: 0;
+    box-shadow: 0.4rem 0.5rem 0.5rem rgba(0, 0, 0, 0.15);
     transition: background 0.2s, transform 0.2s;
 }
 
@@ -84,28 +93,75 @@ nav ul a:hover {
     transform: scale(0.95);
 }
 
+/* Desktop styles (Default) */
+.hamburger {
+    display: none; 
+    cursor: pointer;
+    font-size: 2rem; /* 20px */
+    background: none;
+    border: none;
+}
+
+/* Tablet and Mobile styles */
+@media screen and (max-width: 60rem) { /* 768px */
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+
+        /* full screen */
+        position: absolute;
+        margin-top: 0;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        /* Adjust height to take up the rest of the screen */
+        height: calc(100vh - 100%);
+        z-index: 999;
+
+        background-color: #ffffff;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 2rem; /* 20px */
+        border-top: 0.1rem solid #eeeeee; /* 1px */
+    }
+
+    .hamburger {
+        display: block;
+        position: relative;
+        z-index: 1000;
+    }
+}
+
 /* Style for homepage image */ 
 .hero { 
-    max-width: 1100px;
-    width: calc(100% - 60px);
-    height: 520px;
-    margin: 30px auto;
-
+    max-width: 110rem; /* 1100px */
+    width: calc(100% - 6rem); /* 60px */
+    height: 52rem; /* 520px */
+    margin: 3rem auto; /* 30px */
     background-image: url('../images/background.jpg'); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
-
-    border-radius: 15px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-
+    border-radius: 1.5rem; /* 15px */
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2); /* 4px 8px */
     display: flex;
     justify-content: center;
     align-items: center;
-    position : relative;
+    position: relative;
 } 
 
-/* Wrapper to hold picture and text */ 
 .wrapper { 
     text-align: center; 
     color: white; 
@@ -116,26 +172,35 @@ nav ul a:hover {
     position: relative;
     z-index: 1;
     background-color: rgba(255, 255, 255, 0.6); 
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(0.3rem); /* 3px */
+    -webkit-backdrop-filter: blur(0.3rem); /* 3px */
     display: inline-block; 
-    padding: 20px 30px; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    padding: 2rem 3rem; /* 20px 30px */
+    border-radius: 1rem; /* 10px */
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.3); /* 4px 8px */
     max-width: 80%;
     text-align: center;
-    color: #111
+    color: #111;
 } 
 
+.info-section {
+    max-width: 110rem; /* 1100px */
+    width: calc(100% - 6rem); /* 60px */
+    height: 52rem; /* 520px */
+    margin: 3rem auto; /* 30px */
+    border-radius: 1.5rem; /* 15px */
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2); /* 4px 8px */
+}
+
 /* MEDIA */
-@media (max-width: 768px){
-  .hero{
-    height: 360px;
-    width: calc(100% - 30px);
-    margin: 15px auto;
+@media (max-width: 76.8rem){ /* 768px */
+  .hero {
+    height: 36rem; /* 360px */
+    width: calc(100% - 3rem); /* 30px */
+    margin: 1.5rem auto; /* 15px */
   }
-  .text-box{
+  .text-box {
     max-width: 92%;
-    padding: 16px 18px;
+    padding: 1.6rem 1.8rem; /* 16px 18px */
   }
 }

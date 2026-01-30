@@ -7,12 +7,12 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit;
 }
 
-// Redirect if not a client
-if ($_SESSION['role'] !== 'client') {
-    if ($_SESSION['role'] == 'trainer') {
-        header("Location: trainer.php");
-    } elseif ($_SESSION['role'] == 'admin') {
+// Redirect if not a trainer
+if ($_SESSION['role'] !== 'trainer') {
+    if ($_SESSION['role'] == 'admin') {
         header("Location: admin.php");
+    } elseif ($_SESSION['role'] == 'client') {
+        header("Location: client.php");
     }
     exit;
 }
@@ -22,7 +22,7 @@ if ($_SESSION['role'] !== 'client') {
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Client Page</title>
+    <title>Trainer Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Custom Google font -->
@@ -35,11 +35,10 @@ if ($_SESSION['role'] !== 'client') {
 </head>
 <body>
     <nav>
-        <a href="index.php" class="nav-logo">
-        </a>
-
-        <ul class="nav-links">
-            <li><a href="index.php">Main Page</a></li>
+        <a href="admin.php" class="nav-logo"></a>
+        
+        <ul class='nav-links'>
+            <li><a href="admin.php">Home Page</a></li>
             <li><a href="logout.php">Log out</a></li>
             <li><a href="profile.html">Profile Page</a></li>
         </ul>
@@ -47,17 +46,9 @@ if ($_SESSION['role'] !== 'client') {
         <button id="hamburger" class="hamburger">
             <i class="fa-solid fa-bars"></i>
         </button>
-
+    
     </nav>
-    <main>
-        <section class="hero">
-            <div class="wrapper">
-                <div class="text-box">
-                    <h1>Welcome, <?php echo $_SESSION['first_name']; ?>.</h1>
-                </div>
-            </div>
-        </section>
-    </main>
+    <h2>Trainer Dashboard</h2>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

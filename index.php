@@ -7,6 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>FitLife Studios</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/formStyle.css">
     <!-- Custom Google font -->
@@ -22,20 +23,35 @@ session_start();
     <nav>
         <a href="index.php" class="nav-logo"></a>
         
-        <button id="navLogin" class="navLogin">Login/Signup</button></li>
+        <ul class='nav-links'>
+            <button id="navLogin" class="navLogin">Login/Signup</button>
+        </ul>
+
+        <button id="hamburger" class="hamburger">
+            <i class="fa-solid fa-bars"></i>
+        </button>
         
     </nav>
     <main>
-        <div class="hero">
+        <section class="hero">
             <div class="wrapper">
                 <div class="text-box">
                     <h1>Welcome to FitLife Studios</h1>
                 </div>
             </div>
-        </div>
+        </section>
+        <section class="info-section">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>FitLife Studios is dedicated to helping you achieve your fitness goals with personalized training programs and expert guidance. Whether you're a beginner or a seasoned athlete, we have something for everyone.</p>
+
+            </div>
+
+        </section>
     </main>
    
 
     <?php include 'includes/auth-modal.php'; ?>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>

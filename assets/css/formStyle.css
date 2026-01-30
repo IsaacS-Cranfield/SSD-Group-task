@@ -1,3 +1,7 @@
+html {
+    font-size: 62.5%; /* 1rem is 10px */
+}
+
 /* Set a default font and background for the body */
 body {
   font-family: "Nunito", sans-serif;
@@ -6,43 +10,65 @@ body {
 
 input[type=text], input[type=password] {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 1.2rem 2rem;
+  margin: 0.8rem 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 0.1rem solid #ccc;
   box-sizing: border-box;
 }
 
 .modal-content button{
   background-color: RGB(107, 142, 35);
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
+  padding: 1.4rem 2rem;
+  margin: 0.8rem 0;
   border: none;
   cursor: pointer;
   width: 100%;
+  border-radius: 0.8rem;
+  transition: opacity 0.2s, transform 0.2s;
+
 }
 
 .modal-content button:hover {
   opacity: 0.8;
-}
-
-.modal-content .cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
+  transform: scale(0.99);
 }
 
 .modal-content .signbtn {
   width: auto;
-  padding: 10px 18px;
+  padding: 1rem 1.8rem;
   background-color: #11eb97;
+  border-radius: 0.8rem;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.modal-content .signbtn:hover {
+  opacity: 0.8;
+  transform: scale(0.99);
+}
+
+.modal-content .submit {
+  width: 100%;
+  padding: 1.4rem 2rem;
+  margin: 1.2rem 0;
+  background-color: RGB(107, 142, 35);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.modal-content .submit:hover {
+  opacity: 0.8;
+  transform: scale(0.99);
 }
 
 /* Center the image and position the close button */
 .imgcontainer {
   text-align: center;
-  margin: 24px 0 12px 0;
+  margin: 2.4rem 0 1.2rem 0;
   position: relative;
 }
 
@@ -52,7 +78,7 @@ img.avatar {
 }
 
 .container {
-  padding: 16px;
+  padding: 1.6rem;
 }
 
 .success {
@@ -60,19 +86,9 @@ img.avatar {
   text-align: center;
 }
 
-span.password {
-  float: right;
-  padding-top: 16px;
-}
-
-.password-container .visibility {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 18px;
-
+.password-container{
+  position: relative;
+  padding-top: 1.6rem;
 }
 
 /* The Modal (background) */
@@ -87,7 +103,7 @@ span.password {
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
+  padding-top: 6rem;
 }
 
 /* Modal Content Box */
@@ -96,6 +112,9 @@ span.password {
   margin: 10% auto 20% auto;
   border: 1px solid #888;
   width: 80%;
+  border-radius: 0.8rem; /* rounded corners consistent with other elements */
+  /* stop the corners of the bottom container from sticking out of the modal */
+  overflow: hidden;
 }
 
 /* The Close Button */
@@ -104,16 +123,28 @@ span.password {
   right: 25px;
   top: 0;
   color: RGB(255,0,0);
-  font-size: 30px;
+  font-size: 3rem;
   font-weight: bold;
 }
 
 /* The Signup Button */
 .close {
   position: absolute;
-  right: 0px;
-  top: 0;
-  color: RGB(0,128,0);
-  font-size: 30px;
+  cursor: pointer;
+  right: 3rem;
+  top: 1rem;
+
+  /* These three lines shrink the container to the icon size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1; 
+  
+  padding: 0.5rem; /* Small padding for a better "hit area" */
+  cursor: pointer;
+  font-size: 4rem;
   font-weight: bold;
+  height: fit-content;
+  color: RGB(0,128,0);
+
 }
