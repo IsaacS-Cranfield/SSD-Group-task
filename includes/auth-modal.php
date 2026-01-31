@@ -1,6 +1,6 @@
 <!-- Login Modal -->
 <div id="id01" class="modal">
-    <form class="modal-content animate" action="authenticate.php" method="post" action="">
+    <form class="modal-content animate" action="authenticate.php" method="post">
         <div class="imgcontainer">
             <span onclick="document.getElementById('id01').style.display='none'"
                 class="close" title="Close Modal">&times;</span>
@@ -10,12 +10,16 @@
         if (isset($_SESSION['success_message'])) {
             echo '<p class="success">' . htmlspecialchars($_SESSION['success_message']) . '</p>';
             unset($_SESSION['success_message']);
+        } elseif (isset($_SESSION['login_fail'])) {
+            echo '<p class="error">' . htmlspecialchars($_SESSION['login_fail']) . '</p>';
+            unset($_SESSION['login_fail']);
         }
         ?>
         <div class="container">
 
             <label for="email"><b>Email</b></label>
-            <input type="text" name="email" id="login_email" placeholder="Enter Email" required autocomplete="email">
+            <input type="email" name="email" id="login_email" placeholder="Enter Email" required autocomplete="email" 
+                value="<?php echo $_SESSION['temp_email'] ?? ''; ?>"> <!-- retain input value after failed submission -->
 
             <div class="password-container">
                 <label for="password"><b>Password</b></label>
@@ -50,13 +54,38 @@
         </div>
 
         <div class="container">
-            <label for="email"><b>Email</b></label>
-            <input type="text" name="email" id="signup_email" placeholder="Enter Email" autocomplete="email" required>
             <label for="first_name"><b>First Name</b></label>
-            <input type="text" id="first_name" name="first_name" placeholder="Enter First Name" required>
+            <input type="text" id="first_name" name="first_name" placeholder="Enter First Name" required 
+                value="<?php echo $_SESSION['temp_first_name'] ?? ''; ?>"> <!-- retain input value after failed submission -->
+
+
             <label for="last_name"><b>Last Name</b></label>
-            <input type="text" id="last_name" name="last_name" placeholder="Enter Last Name" required>
-        
+            <input type="text" id="last_name" name="last_name" placeholder="Enter Last Name" required 
+                value="<?php echo $_SESSION['temp_last_name'] ?? ''; ?>">
+            
+            <!-- Display email error if set -->
+            <?php 
+            if (isset($_SESSION['email_error'])) {
+                echo '<p class="error">' . htmlspecialchars($_SESSION['email_error']) . '</p>';
+                unset($_SESSION['email_error']);
+            }
+            ?>
+            <label for="email"><b>Email</b></label>
+            <input type="email" name="email" id="signup_email" placeholder="Enter Email" autocomplete="email" required
+                value="<?php echo $_SESSION['temp_email'] ?? ''; ?>">
+
+
+            <!-- Display mobile number error if set -->
+            <?php 
+            if (isset($_SESSION['mobile_error'])) {
+                echo '<p class="error">' . htmlspecialchars($_SESSION['mobile_error']) . '</p>';
+                unset($_SESSION['mobile_error']);
+            }
+            ?>
+            <label for="mobile"><b>Mobile Number (Optional)</b></label>
+            <input type="text" name="mobile" id="signup_mobile" placeholder="Enter Mobile Number"
+                value="<?php echo $_SESSION['temp_mobile'] ?? ''; ?>">
+
             <div class="password-container">
                 <label for="password"><b>Password</b></label>
                 <input type="password" id="signPassword"  name="password" placeholder="Enter Password" required>
@@ -71,12 +100,20 @@
                     <i class="fa-regular fa-eye-slash"></i>
                 </span>
             </div>
+            <!-- Display match error if passwords dont match -->
+            <?php 
+            if (isset($_SESSION['match_error'])) {
+                echo '<p class="error">' . htmlspecialchars($_SESSION['match_error']) . '</p>';
+                unset($_SESSION['match_error']);
+            }
+            ?>
 
             <label for="role">I am a:</label>
             <select name="role" id="role">
-                <option value="client">Client</option>
-                <option value="trainer">Trainer</option>
-                <option value="admin">Admin</option>
+                <!-- Retain selected role after failed submission -->
+                <option value="client"<?php echo (isset($_SESSION['temp_role']) && $_SESSION['temp_role'] === 'client') ? ' selected' : ''; ?>>Client</option>
+                <option value="trainer"<?php echo (isset($_SESSION['temp_role']) && $_SESSION['temp_role'] === 'trainer') ? ' selected' : ''; ?>>Trainer</option>
+                <option value="admin"<?php echo (isset($_SESSION['temp_role']) && $_SESSION['temp_role'] === 'admin') ? ' selected' : ''; ?>>Admin</option>
             </select>
             <input type="submit" name="signup" id="signupSubmitBtn" class="submit" value="Sign Up">
             <label>
@@ -101,6 +138,16 @@
         });
 
     <?php unset($_SESSION['open_login_modal']); endif; ?>
+
+    <?php if (!empty($_SESSION['open_signup_modal'])): ?>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('id01').style.display = 'none';
+            document.getElementById('id02').style.display = 'block';
+        });
+
+    <?php unset($_SESSION['open_signup_modal']); endif; ?>
+
 
     document.addEventListener('DOMContentLoaded', function() {
         var loginModal = document.getElementById('id01');

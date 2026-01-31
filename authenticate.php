@@ -8,7 +8,7 @@ if(mysqli_connect_errno())
 }
 
 //Prepare SQL statement. ? is a placeholder. 
-if($stmt = $connection->prepare('SELECT email, first_name, password_hash, `role` FROM users WHERE email = ?')) {
+if($stmt = $connection->prepare('SELECT email, first_name, last_name, mobile, password_hash, `role` FROM users WHERE email = ?')) {
     //Bind parameters. Insert actual value into the placeholder
     $stmt->bind_param('s', $_POST['email']);
     $stmt->execute();
@@ -18,15 +18,21 @@ if($stmt = $connection->prepare('SELECT email, first_name, password_hash, `role`
 
 //Check if query has returned any results
 if ($stmt->num_rows>0){ // if rows in stmt > 0, user exists
-    $stmt->bind_result($email, $firstName, $passwordHash, $role); //store results in variables
+    $stmt->bind_result($email, $firstName, $lastName, $mobile, $passwordHash, $role); //store results in variables
     $stmt->fetch();
 
     //verify password and create sessions
     if(password_verify($_POST['password'], $passwordHash)) {
         $_SESSION['loggedin'] = true; // set session as logged in
-        $_SESSION['name']=$_POST['email']; // set the session name as the email
-        $_SESSION['first_name']=$firstName; // set the session first name
-        $_SESSION['role']=$role; // set the session role
+        $_SESSION['email']=$_POST['email']; // store user email in session
+        $_SESSION['first_name']=$firstName; // store user first name in session
+        // Additional user details
+        $_SESSION['last_name']=$lastName; // store user last name in session
+        $_SESSION['mobile']=$mobile; // store user mobile in session
+        $_SESSION['role']=$role; // store user role in session
+
+        unset($_SESSION['temp_email']); // clear temporary email from session
+
         if($_SESSION['role'] == "client")
             header ("location: client.php"); // redirect to index.php
         else if($_SESSION['role'] == "trainer")
@@ -35,15 +41,21 @@ if ($stmt->num_rows>0){ // if rows in stmt > 0, user exists
             header ("location: admin.php"); // redirect to index.php
         exit();
     } else {
-        //incorrect credentials, pass error message to index.php
-        $_SESSION['error_message'] = "Incorrect email and/or password.";
-        echo '<script>setTimeout(function(){ window.location.href = "index.php"; }, 500);</script>';
+        //incorrect credentials, pass error message to index.php and open login modal
+        $_SESSION['login_fail'] = "Incorrect email and/or password.";
+        $_SESSION['open_login_modal'] = true;
+        $_SESSION['temp_email'] = $_POST['email']; // Save temporary email to session so it stays in the form
+
+        header("Location: index.php");
         exit();
     }
 } else {
-    //incorrect credentials, pass error message to index.php
-    $_SESSION['error_message'] = "Incorrect email and/or password.";
-    echo '<script>setTimeout(function(){ window.location.href = "index.php"; }, 500);</script>';
+    //incorrect credentials, pass error message to index.php and open login modal
+    $_SESSION['login_fail'] = "Incorrect email and/or password.";
+    $_SESSION['open_login_modal'] = true;
+    $_SESSION['temp_email'] = $_POST['email']; // Save temporary email to session so it stays in the form
+
+    header("Location: index.php");
     exit();
 }
 $stmt->close();

@@ -20,21 +20,22 @@ session_start();
 </head>
 
 <body>
-    <nav>
-        <a href="index.php" class="nav-logo"></a>
+    <header>
+        <nav>
+            <a href="index.php" class="nav-logo"></a>
         
-        <ul class='nav-links'>
-            <button id="navLogin" class="navLogin">Login/Signup</button>
-        </ul>
-
-        <button id="hamburger" class="hamburger">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+            <ul class='nav-links'>
+                <button id="navLogin" class="btn-base theme-important nav-login">Login / Signup</button>
+            </ul>
+            <button id="hamburger" class="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         
-    </nav>
+        </nav>
+    </header>
     <main>
         <section class="hero">
-            <div class="wrapper">
+            <div class="hero-wrapper">
                 <div class="text-box">
                     <h1>Welcome to FitLife Studios</h1>
                 </div>
@@ -43,7 +44,12 @@ session_start();
         <section class="info-section">
             <div class="container">
                 <h2>About Us</h2>
-                <p>FitLife Studios is dedicated to helping you achieve your fitness goals with personalized training programs and expert guidance. Whether you're a beginner or a seasoned athlete, we have something for everyone.</p>
+                <p>
+FitLife Studios is dedicated to helping you achieve your fitness goals with personalized training programs and expert guidance. 
+Whether you're a beginner or a seasoned athlete, we have something for everyone. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+Eligendi officia enim numquam rerum sequi veniam, iure voluptatem dignissimos ratione ipsa dolorum. 
+Blanditiis eos, laboriosam sed alias sunt ullam quam culpa.
+                </p>
 
             </div>
 

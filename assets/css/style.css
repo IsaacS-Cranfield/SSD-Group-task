@@ -16,10 +16,27 @@ h1, h2, h3 {
     margin-bottom: 1rem; /* 10px */
 }
 
+.success {
+  color: green;
+  text-align: center;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
 nav {
     background-color: #ffffff;
     padding: 1rem; /* 10px */
-    margin-bottom: 2rem; /* 20px */
     display: flex;
     position: relative;
     align-items: center;
@@ -36,7 +53,7 @@ nav {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 2rem; /* 20px */
+    margin: 1rem; /* 20px */
 }
 
 .nav-links {
@@ -44,7 +61,7 @@ nav {
     margin-right: 2rem; /* 20px */
     padding: 0;
     display: flex;
-    gap: 1.5rem; /* 15px */
+    gap: 1.5rem;
 }
 
 nav li {
@@ -52,24 +69,67 @@ nav li {
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: black;
     text-align: center;
     display: inline-block;
     width: 15rem;
     padding: 2rem 2.5rem; 
-    background-color: rgb(192, 192, 192);
+}
+
+/* Base button style */
+.btn-base {
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    box-shadow: 0 0.4rem 1rem rgba(0,0,0,0.1);
     border-radius: 0.8rem; 
-    box-shadow: 0.4rem 0.5rem 0.5rem rgba(0, 0, 0, 0.15);
-    transition: background 0.2s, transform 0.2s;
+    border: 0.1rem solid rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.nav-links a:hover {
+.btn-base:hover {
     background-color: RGB(107, 142, 35);
-    transform: scale(0.95);
+    transform: translateY(-5px);
 }
 
-.navLogin {
+/* Theme modifiers */
+.theme-solid {
+    background: #ffffff;
+    border: 0.1rem solid RGB(107, 142, 35);
+}
+
+.theme-important {
+    background: #ffffff;
+    border: 0.2rem solid RGB(107, 142, 35);
+    font-weight: bold;
+}
+
+.theme-glass {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(0.7rem); /* 6px */
+}
+
+/* Size modifiers */
+.btn-sm {
+    padding: 1rem 1.5rem; 
+    font-size: 0.9rem;
+    display: inline-block; /* Essential for <a> tags to respect padding */
+    text-decoration: none;  /* Removes underline from links */
+}
+
+.btn-md {
+    padding: 1.5rem 2rem; 
+    font-size: 2rem;
+    display: inline-block;
+}
+
+.btn-lg {
+    padding: 1.5rem 2rem; 
+    font-size: 2rem;
+    display: inline-block;
+}
+
+.nav-login {
     color: black;
     text-align: center;
     text-decoration: none;
@@ -81,16 +141,6 @@ nav li {
     width: auto;
     padding: 2rem 2.5rem;
     margin-right: 5rem;
-    background-color: rgb(192, 192, 192);
-    border-radius: 0.8rem;
-    border-width: 0;
-    box-shadow: 0.4rem 0.5rem 0.5rem rgba(0, 0, 0, 0.15);
-    transition: background 0.2s, transform 0.2s;
-}
-
-.navLogin:hover {
-    background-color: RGB(107, 142, 35);
-    transform: scale(0.95);
 }
 
 /* Desktop styles (Default) */
@@ -144,7 +194,27 @@ nav li {
     }
 }
 
-/* Style for homepage image */ 
+main {
+    padding-top: var(--nav-height, 15rem); /* Default nav height is 150px */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Background for role pages */
+.role-page {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    justify-content: flex-start;
+ 
+}
+
+/* Style for index image */ 
 .hero { 
     max-width: 110rem; /* 1100px */
     width: calc(100% - 6rem); /* 60px */
@@ -162,7 +232,7 @@ nav li {
     position: relative;
 } 
 
-.wrapper { 
+.hero-wrapper { 
     text-align: center; 
     color: white; 
 } 
@@ -173,7 +243,6 @@ nav li {
     z-index: 1;
     background-color: rgba(255, 255, 255, 0.6); 
     backdrop-filter: blur(0.3rem); /* 3px */
-    -webkit-backdrop-filter: blur(0.3rem); /* 3px */
     display: inline-block; 
     padding: 2rem 3rem; /* 20px 30px */
     border-radius: 1rem; /* 10px */
@@ -190,6 +259,59 @@ nav li {
     margin: 3rem auto; /* 30px */
     border-radius: 1.5rem; /* 15px */
     box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2); /* 4px 8px */
+}
+
+.welcome-section {
+    padding: 4rem; /* 40px */
+    text-align: center;
+    color: #333333;
+}
+
+.dashboard {
+    padding-top: 7rem;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    /* Creates 2 columns that take up equal space */
+    grid-template-columns: repeat(2, 1fr); 
+    /* Spacing between the cards */
+    gap: 2rem; 
+    padding: 2rem;
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 1.5rem; /* Matches your Hero/Modal style */
+    box-shadow: 0 0.4rem 1rem rgba(0,0,0,0.1);
+    backdrop-filter: blur(0.6rem); /* 3px */
+    border: 0.1rem solid rgba(255, 255, 255, 0.4);
+    padding: 4rem;
+    margin: 0;
+    max-width: 140rem;
+    width: 95%;
+}
+
+.glass-panel h1 {
+    color: RGB(107, 142, 35);
+    font-weight: bold;
+    /* Adds a subtle white glow or dark drop shadow */
+    text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.8);    
+}
+
+.dash-card {
+    padding: 4rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.dash-card:hover {
+    transform: translateY(-5px); /* Subtle lift effect */
+    background-color: RGB(107, 142, 35);
 }
 
 /* MEDIA */

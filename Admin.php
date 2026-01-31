@@ -34,21 +34,39 @@ if ($_SESSION['role'] !== 'admin') {
 
 </head>
 <body>
-    <nav>
-        <a href="admin.php" class="nav-logo"></a>
-        
-        <ul class='nav-links'>
-            <li><a href="admin.php">Home</a></li>
-            <li><a href="logout.php">Log out</a></li>
-            <li><a href="profile.html">Profile Page</a></li>
-        </ul>
+    <header>
+        <nav>
+            <a href="admin.php" class="nav-logo"></a>
+            
+            <ul class='nav-links'>
+                <li><a href="admin.php" class="btn-base theme-solid">Home</a></li>
+                <li><a href="profile.php" class="btn-base theme-solid">Profile Page</a></li>
+            </ul>
 
-        <button id="hamburger" class="hamburger">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+            <button id="hamburger" class="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
 
-    </nav>
-    <h2>Admin Page</h2>
+    </header>
+    
+
+    <main class="role-page">
+        <section class="dashboard">
+            <div class="glass-panel">
+                <h1>Admin Page</h1>
+                <div class="grid-container">
+                    <a href="#" class="dash-card btn-base theme-glass">Manage Users</a>
+                    <a href="#" class="dash-card btn-base theme-glass">Manage Payments</a>
+                    <a href="#" class="dash-card btn-base theme-glass">Equipment Maintenance</a>
+                    <a href="#" class="dash-card btn-base theme-glass">Timetable</a>
+                    <a href="#" class="dash-card btn-base theme-glass">Reports</a>
+                    <a href="#" class="dash-card btn-base theme-glass">Settings</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <script src="assets/js/script.js"></script>
 </body>
 </html>

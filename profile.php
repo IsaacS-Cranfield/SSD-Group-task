@@ -7,22 +7,15 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit;
 }
 
-// Redirect if not a trainer
-if ($_SESSION['role'] !== 'trainer') {
-    if ($_SESSION['role'] == 'admin') {
-        header("Location: admin.php");
-    } elseif ($_SESSION['role'] == 'client') {
-        header("Location: client.php");
-    }
-    exit;
-}
+$userRole = $_SESSION['role'] ?? 'index.php'; // Default to index.php if role somehow not set
+$homePage = $userRole . ".php";
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Trainer Dashboard</title>
+    <title>Client Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Custom Google font -->
@@ -36,22 +29,31 @@ if ($_SESSION['role'] !== 'trainer') {
 <body>
     <header>
         <nav>
-            <a href="admin.php" class="nav-logo"></a>
-        
-            <ul class='nav-links'>
-                <li><a href="admin.php" class="btn-base theme-solid">Home</a></li>
+            <a href="<?php echo $homePage; ?>" class="nav-logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="<?php echo $homePage; ?>" class="btn-base theme-solid">Home</a></li>
                 <li><a href="profile.php" class="btn-base theme-solid">Profile Page</a></li>
             </ul>
             <button id="hamburger" class="hamburger">
                 <i class="fa-solid fa-bars"></i>
             </button>
-        
         </nav>
     </header>
+    <main class="role-page">
+        <section class="dashboard">
+            <div class="glass-panel">
+                <h1>User Information</h1>
+                <h2>First Name: <?php echo $_SESSION['first_name']; ?></h2>
+                <h2>Last Name: <?php echo $_SESSION['last_name']; ?></h2>
+                <h2>Email: <?php echo $_SESSION['email']; ?></h2>
+                <h2>Mobile Number: <?php echo $_SESSION['mobile']; ?></h2>
+                <h2>Role: <?php echo $_SESSION['role']; ?></h2>
 
-    <h2>Trainer Dashboard</h2>
-
-
+                <a href="logout.php" class="btn-base theme-glass btn-lg">Log out</a>
+            </div>
+        </section>
+    </main>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

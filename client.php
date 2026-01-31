@@ -34,26 +34,25 @@ if ($_SESSION['role'] !== 'client') {
 
 </head>
 <body>
-    <nav>
-        <a href="index.php" class="nav-logo">
-        </a>
-
-        <ul class="nav-links">
-            <li><a href="index.php">Main Page</a></li>
-            <li><a href="logout.php">Log out</a></li>
-            <li><a href="profile.html">Profile Page</a></li>
-        </ul>
-
-        <button id="hamburger" class="hamburger">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-
-    </nav>
-    <main>
-        <section class="hero">
-            <div class="wrapper">
-                <div class="text-box">
-                    <h1>Welcome, <?php echo $_SESSION['first_name']; ?>.</h1>
+    <header>
+        <nav>
+            <a href="index.php" class="nav-logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.php" class="btn-base theme-solid">Home</a></li>
+                <li><a href="profile.php" class="btn-base theme-solid">Profile Page</a></li>
+            </ul>
+            <button id="hamburger" class="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+    <main class="role-page">
+        <section class="dashboard">
+            <div class="glass-panel">
+                <h1>Client Dashboard</h1>
+                <div class="welcome-message">
+                    <h2>Welcome, <?php echo $_SESSION['first_name']; ?>.</h2>
                 </div>
             </div>
         </section>
