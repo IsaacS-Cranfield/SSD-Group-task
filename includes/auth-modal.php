@@ -18,12 +18,12 @@
         <div class="container">
 
             <label for="email"><b>Email</b></label>
-            <input type="email" name="email" id="login_email" placeholder="Enter Email" required autocomplete="email" 
+            <input type="email" class="form-input" name="email" id="login_email" placeholder="Enter Email" required autocomplete="email" 
                 value="<?php echo $_SESSION['temp_email'] ?? ''; ?>"> <!-- retain input value after failed submission -->
 
             <div class="password-container">
                 <label for="password"><b>Password</b></label>
-                <input type="password" id="loginPassword" placeholder="Enter Password" name="password" required>
+                <input type="password" class="form-input" id="loginPassword" placeholder="Enter Password" name="password" required>
                 <span class="loginVisibility" onclick="toggleLoginPasswordVisibility()">
                     <i class="fa-regular fa-eye-slash"></i>
                 </span>
@@ -55,12 +55,12 @@
 
         <div class="container">
             <label for="first_name"><b>First Name</b></label>
-            <input type="text" id="first_name" name="first_name" placeholder="Enter First Name" required 
+            <input type="text" class="form-input" id="first_name" name="first_name" placeholder="Enter First Name" required 
                 value="<?php echo $_SESSION['temp_first_name'] ?? ''; ?>"> <!-- retain input value after failed submission -->
 
 
             <label for="last_name"><b>Last Name</b></label>
-            <input type="text" id="last_name" name="last_name" placeholder="Enter Last Name" required 
+            <input type="text" class="form-input" id="last_name" name="last_name" placeholder="Enter Last Name" required 
                 value="<?php echo $_SESSION['temp_last_name'] ?? ''; ?>">
             
             <!-- Display email error if set -->
@@ -71,7 +71,7 @@
             }
             ?>
             <label for="email"><b>Email</b></label>
-            <input type="email" name="email" id="signup_email" placeholder="Enter Email" autocomplete="email" required
+            <input type="email" class="form-input" name="email" id="signup_email" placeholder="Enter Email" autocomplete="email" required
                 value="<?php echo $_SESSION['temp_email'] ?? ''; ?>">
 
 
@@ -83,19 +83,19 @@
             }
             ?>
             <label for="mobile"><b>Mobile Number (Optional)</b></label>
-            <input type="text" name="mobile" id="signup_mobile" placeholder="Enter Mobile Number"
+            <input type="text" class="form-input" name="mobile" id="signup_mobile" placeholder="Enter Mobile Number"
                 value="<?php echo $_SESSION['temp_mobile'] ?? ''; ?>">
 
             <div class="password-container">
                 <label for="password"><b>Password</b></label>
-                <input type="password" id="signPassword"  name="password" placeholder="Enter Password" required>
+                <input type="password" class="form-input" id="signPassword"  name="password" placeholder="Enter Password" required>
                 <span class="signVisibility" onclick="toggleSignupPasswordVisibility()">
                     <i class="fa-regular fa-eye-slash"></i>
                 </span>
             </div>
             <div class="password-container">
                 <label for="Cpassword"><b>Confirm Password</b></label>
-                <input type="password" id="Cpassword" name="Cpassword" placeholder="Confirm password" required>
+                <input type="password" class="form-input" id="Cpassword" name="Cpassword" placeholder="Confirm password" required>
                 <span class="Cvisibility" onclick="toggleCpasswordVisibility()">
                     <i class="fa-regular fa-eye-slash"></i>
                 </span>
@@ -108,13 +108,29 @@
             }
             ?>
 
-            <label for="role">I am a:</label>
-            <select name="role" id="role">
-                <!-- Retain selected role after failed submission -->
-                <option value="client"<?php echo (isset($_SESSION['temp_role']) && $_SESSION['temp_role'] === 'client') ? ' selected' : ''; ?>>Client</option>
-                <option value="trainer"<?php echo (isset($_SESSION['temp_role']) && $_SESSION['temp_role'] === 'trainer') ? ' selected' : ''; ?>>Trainer</option>
-                <option value="admin"<?php echo (isset($_SESSION['temp_role']) && $_SESSION['temp_role'] === 'admin') ? ' selected' : ''; ?>>Admin</option>
-            </select>
+            
+            <div class="role-container">
+                <label for="role">I am a:</label>
+                <select name="role" id="role">
+                    <!-- Retain selected role after failed submission -->
+                    <option value="client"<?php echo (isset($_SESSION['temp_role']) && $_SESSION['temp_role'] === 'client') ? ' selected' : ''; ?>>Client</option>
+                    <option value="trainer"<?php echo (isset($_SESSION['temp_role']) && $_SESSION['temp_role'] === 'trainer') ? ' selected' : ''; ?>>Trainer</option>
+                    <option value="admin"<?php echo (isset($_SESSION['temp_role']) && $_SESSION['temp_role'] === 'admin') ? ' selected' : ''; ?>>Admin</option>
+                </select>
+            </div>
+
+            <?php 
+            if (isset($_SESSION['admin_code_error'])) {
+                echo '<p class="error">' . htmlspecialchars($_SESSION['admin_code_error']) . '</p>';
+                unset($_SESSION['admin_code_error']);
+            }
+            ?>
+
+            <div class="admin-code-container" id="admin-code-container" style="display: <?php echo (isset($_SESSION['temp_role']) && $_SESSION['temp_role'] === 'admin') ? 'block' : 'none'; ?>;">
+                <label for="admin_code"><b>Admin Code</b></label>
+                <input type="password" class="form-input" id="admin_code" name="admin_code" placeholder="Enter 4-digit Code">
+            </div>
+
             <input type="submit" name="signup" id="signupSubmitBtn" class="submit" value="Sign Up">
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
@@ -243,4 +259,18 @@
             icon.classList.add("fa-eye-slash");
         }   
     }
+
+    document.getElementById('role').addEventListener('change', function() {
+        const adminSection = document.getElementById('admin-code-container');
+        const adminInput = document.getElementById('admin_code');
+        
+        if (this.value === 'admin') {
+            adminSection.style.display = 'block';
+            adminInput.setAttribute('required', 'required'); // Make it mandatory
+        } else {
+            adminSection.style.display = 'none';
+            adminInput.removeAttribute('required'); // Remove requirement for Clients/Trainers
+        }
+    });
+
 </script>
