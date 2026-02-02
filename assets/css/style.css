@@ -42,11 +42,14 @@ nav {
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.15); /* 5px 15px */
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(0.7rem); /* 6px */
+
 }
 
 .nav-logo {
     display: block;
-    max-width: 25rem; /* 250px */
+    max-width: 20rem; /* 250px */
     width: 40%;
     aspect-ratio: 250 / 100;
     background-image: url('../images/FitLife-logo.png');
@@ -90,6 +93,16 @@ nav li {
 .btn-base:hover {
     background-color: RGB(107, 142, 35);
     transform: translateY(-5px);
+}
+
+.container-base {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem; 
+    margin: 2rem;
+    border-radius: 1.5rem; 
+    box-shadow: 0 0.4rem 1rem rgba(0,0,0,0.1);
 }
 
 /* Theme modifiers */
@@ -152,50 +165,8 @@ nav li {
     border: none;
 }
 
-/* Tablet and Mobile styles */
-@media screen and (max-width: 60rem) { /* 768px */
-    .hamburger {
-        display: block;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-items: center;
-
-        /* full screen */
-        position: absolute;
-        margin-top: 0;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        /* Adjust height to take up the rest of the screen */
-        height: calc(100vh - 100%);
-        z-index: 999;
-
-        background-color: #ffffff;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links a {
-        padding: 2rem; /* 20px */
-        border-top: 0.1rem solid #eeeeee; /* 1px */
-    }
-
-    .hamburger {
-        display: block;
-        position: relative;
-        z-index: 1000;
-    }
-}
-
 main {
-    padding-top: var(--nav-height, 15rem); /* Default nav height is 150px */
+    padding-top: var(--nav-height, 12rem); /* Default nav height is 150px */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -272,6 +243,14 @@ main {
     text-align: center;
 }
 
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+
 .grid-container {
     display: grid;
     /* Creates 2 columns that take up equal space */
@@ -314,6 +293,81 @@ main {
     background-color: RGB(107, 142, 35);
 }
 
+.schedule-preview {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    text-align: left;
+}
+
+.schedule-list {
+    list-style: none;
+    padding: 0;
+}
+
+.schedule-list li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.schedule-list li span {
+    font-weight: bold;
+    color: RGB(107, 142, 35); /* Your brand green */
+}
+
+footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 40px 20px 20px;
+    margin-top: 50px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.footer-column h3 {
+    color: RGB(107, 142, 35); /* Your brand green */
+    margin-bottom: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.footer-logo {
+    width: 120px;
+    margin-bottom: 15px;
+}
+
 /* MEDIA */
 @media (max-width: 76.8rem){ /* 768px */
   .hero {
@@ -326,3 +380,53 @@ main {
     padding: 1.6rem 1.8rem; /* 16px 18px */
   }
 }
+
+@media (max-width: 60rem) {
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tablet and Mobile styles */
+@media screen and (max-width: 60rem) { /* 768px */
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+
+        /* full screen */
+        position: absolute;
+        margin-top: 0;
+        padding-top: 2rem;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        /* Adjust height to take up the rest of the screen */
+        height: calc(100vh - 100%);
+        z-index: 999;
+
+        background-color: #ffffff;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 2rem; /* 20px */
+        border-top: 0.1rem solid #eeeeee; /* 1px */
+    }
+
+    .hamburger {
+        display: block;
+        position: relative;
+        z-index: 1000;
+    }
+}
+

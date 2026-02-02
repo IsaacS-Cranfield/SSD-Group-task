@@ -18,3 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// If the page is loaded from the 'back/forward' cache, reload it
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+            window.location.reload();
+        }
+    });

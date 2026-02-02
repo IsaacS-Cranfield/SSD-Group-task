@@ -55,7 +55,35 @@ Blanditiis eos, laboriosam sed alias sunt ullam quam culpa.
 
         </section>
     </main>
-   
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <img src="assets/images/FitLife-logo.png" alt="FitLife Logo" class="footer-logo">
+                <p>Elevating your fitness journey with expert trainers and premium facilities.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Membership</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-location-dot"></i> 123 Fitness Way, London</p>
+                <p><i class="fa-solid fa-phone"></i> +44 20 1234 5678</p>
+                <p><i class="fa-solid fa-envelope"></i> support@fitlife.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <!-- Current year display -->
+            <p>&copy; <?php echo date("Y"); ?> FitLife Studios. All rights reserved.</p>
+        </div>
+    </footer>   
 
     <?php include 'includes/auth-modal.php'; ?>
     <script src="assets/js/script.js"></script>

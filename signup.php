@@ -46,8 +46,26 @@ if(isset($_POST['signup'])) {
     // Check admin code if role is admin
     if ($_POST['role'] === 'admin') {
         $secret_code = "0987";
-        if (!isset($_POST['admin_code']) || $_POST['admin_code'] !== $secret_code) {
-            $_SESSION['admin_code_error'] = "Invalid admin code.";
+        if (!isset($_POST['role_code']) || $_POST['role_code'] !== $secret_code) {
+            $_SESSION['role_code_error'] = "Invalid admin code.";
+            $_SESSION["open_signup_modal"] = true;
+
+            // Save input values to session so they are not lost
+            $_SESSION['temp_first_name'] = $first_name;
+            $_SESSION['temp_last_name'] = $last_name;
+            $_SESSION['temp_email'] = $email;
+            $_SESSION['temp_mobile'] = $mobile;
+            $_SESSION['temp_role'] = $role;
+
+            header("Location: index.php");
+            exit();
+        }
+    }
+    // Check admin code if role is admin
+    if ($_POST['role'] === 'trainer') {
+        $secret_code = "8765";
+        if (!isset($_POST['role_code']) || $_POST['role_code'] !== $secret_code) {
+            $_SESSION['role_code_error'] = "Invalid trainer code.";
             $_SESSION["open_signup_modal"] = true;
 
             // Save input values to session so they are not lost

@@ -1,5 +1,12 @@
 <?php
 session_start(); 
+
+// Prevent browser caching
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
+
 // Redirect if not logged in
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     $_SESSION['open_login_modal'] = true;
@@ -54,9 +61,29 @@ if ($_SESSION['role'] !== 'client') {
                 <div class="welcome-message">
                     <h2>Welcome, <?php echo $_SESSION['first_name']; ?>.</h2>
                 </div>
+                <div class="dashboard-layout">
+                    <div class="grid-container">
+                        <a href="#" class="dash-card btn-base theme-glass">My Progress</a>
+                        <a href="#" class="dash-card btn-base theme-glass">Book a Session</a>
+                        <a href="#" class="dash-card btn-base theme-glass">Workout Plans</a>
+                        <a href="#" class="dash-card btn-base theme-glass">Payments & Billing</a>
+                        <a href="#" class="dash-card btn-base theme-glass">Message Trainer</a>
+                        <a href="#" class="dash-card btn-base theme-glass">Settings</a>
+                    </div>
+
+                    <div class=" schedule-preview theme-glass container-base">
+                        <h3>Todays Schedule</h3>
+                        <ul class="schedule-list">
+                            <li><span>Today</span> - Morning Yoga (Trainer: Maya Chen)</li>
+                            <li><span>Wed</span> - HIIT Session (Trainer: Alex Rivers)</li>
+                            <li><span>Fri</span> - Strength Training (Trainer: Jordan Vance)</li>
+                            <li><span>Sat</span> - Progress Consultation (Trainer: Jordan Vance)</li>
+                        </ul>                    
+                    </div>
+                </div>
             </div>
         </section>
-    </main>
+        </main>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

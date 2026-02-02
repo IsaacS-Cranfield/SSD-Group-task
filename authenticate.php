@@ -33,12 +33,14 @@ if ($stmt->num_rows>0){ // if rows in stmt > 0, user exists
 
         unset($_SESSION['temp_email']); // clear temporary email from session
 
-        if($_SESSION['role'] == "client")
-            header ("location: client.php"); // redirect to index.php
-        else if($_SESSION['role'] == "trainer")
-            header ("location: trainer.php"); // redirect to index.php
-        else if($_SESSION['role'] == "admin")
-            header ("location: admin.php"); // redirect to index.php
+        // --- MFA SIMULATION START ---
+        // Instead of redirecting to the dashboards, set an MFA flag
+        $_SESSION['mfa_pending'] = true; 
+        
+        // Redirect back to index.php to trigger the modal show
+        header("Location: index.php"); 
+        // --- MFA SIMULATION END ---
+
         exit();
     } else {
         //incorrect credentials, pass error message to index.php and open login modal
